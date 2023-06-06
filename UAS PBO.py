@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox as msg
 from tkinter.filedialog import askopenfilename, asksaveasfilename
 import os
-
+#mengimport tkinter untuk membuat Gui pada python
 class Notepad(Tk):
     def __init__(self):
         super().__init__()
@@ -12,21 +12,27 @@ class Notepad(Tk):
         self.file = None
         self._textArea()
         self._menu()
-    
+#Membuat Kelas Notepad pada tkinter python
+
     def about_notepad(self):
         msg.showinfo('About Notepad', 'This is created by Keisya and Hafidz')
-    
+#Membuat Fungsi About_notepad merupakan tools yang berisikan tentang di dalam notepad 
+
     def copy(self):
         self.textbox.event_generate('<<Copy>>')
+#Membuat Fungsi Copy untuk menyalin teks pada notepad
 
     def paste(self):
         self.textbox.event_generate('<<Paste>>')
+#Membuat Fungsi Paste untuk menempel teks yang sudah disalin ke tempat notepad/baris yang dituju atau tempat dipindahkan
 
     def cut(self):
         self.textbox.event_generate('<<Cut>>')
+#Membuat Fungsi Cut untuk memotong teks ke baris atau tempat lain
 
     def exit(self):
         self.destroy()
+#Membuat Fungsi exit untuk keluar dari Notepad
 
     def open_file(self):
         if self.textbox.get(1.0, END) != '\n':  # Memeriksa apakah teks ada di dalam textbox
@@ -44,7 +50,8 @@ class Notepad(Tk):
             with open(self.file, 'r') as f:
                 self.textbox.delete(1.0, END)  # Menghapus teks sebelumnya sebelum membuka file baru
                 self.textbox.insert(1.0, f.read())
-    
+#Fungsi untuk membuka file notepad yang sudah ada
+
     def new_file(self):
         if self.textbox.get(1.0, END) != '\n':  # Memeriksa apakah teks ada di dalam textbox
             answer = msg.askyesnocancel("Save", "Do you want to save the current file?")
@@ -56,6 +63,7 @@ class Notepad(Tk):
         self.textbox.delete(1.0, END)
         self.title('Untitled - Notepad')
         self.file = None
+#Fungsi untuk membuat file teks baru pada notepad
 
     def save_file(self):
         if self.file is None:
@@ -70,7 +78,8 @@ class Notepad(Tk):
         else:
             with open(self.file, 'w') as f:
                 f.write(self.textbox.get(1.0, END))
-    
+#Fungsi untuk menyimpan file notepad ke folder komputer
+
     def _textArea(self):
         self.textbox = Text(self, font='lucida 12')
         self.textbox.pack(fill = BOTH, expand = 1)
@@ -78,7 +87,8 @@ class Notepad(Tk):
         self.scrollbar.pack(side = RIGHT, fill = Y)
         self.scrollbar.config(command = self.textbox.yview)
         self.textbox.config(yscrollcommand = self.scrollbar.set)
-    
+#Membuat tempat atau kolom teks pada notepad dan membuat scrollbar
+
     def _menu(self):
         self.menubar = Menu(self)
         self.config(menu = self.menubar)
@@ -99,6 +109,8 @@ class Notepad(Tk):
         self.about_menu = Menu(self.menubar, tearoff = 0)
         self.menubar.add_cascade(label = 'About', menu = self.about_menu)
         self.about_menu.add_command(label = 'About Notepad', command = self.about_notepad)
+
+#membuat bagian menu bar pada Notepad yang berisikan 3 tools yaitu File, Edit, dan About
 
 window = Notepad()
 window.mainloop()
