@@ -7,7 +7,7 @@ class Notepad(Tk):
     def __init__(self):
         super().__init__()
         self.minsize(600,600)
-        self.title("Notepad")
+        self.title(tepad")
         self.wm_iconbitmap('notepad.ico')
         self.file = None
         self._textArea()
@@ -110,8 +110,8 @@ class Notepad(Tk):
         self.menubar.add_cascade(label = 'About', menu = self.about_menu)
         self.about_menu.add_command(label = 'About Notepad', command = self.about_notepad)
 
-#membuat bagian menu bar pada Notepad yang berisikan 3 tools yaitu File, Edit, dan About
+#membuat bagian menu bar pada Notepad yang berisikan 3 tools yaitu File, Edit, dan 
 
-window = Notepad()
-window.mainloop()
-        
+
+
+        out
